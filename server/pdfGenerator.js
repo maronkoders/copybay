@@ -2,7 +2,9 @@ const PDFDocument = require('pdfkit');
 const table = require('./drawTable.js');
 const fs = require('fs');
 
-// Create a document
+
+function createCV() {
+    // Create a document
 const doc = new PDFDocument();
 
 // Pipe its output somewhere, like to a file or HTTP response
@@ -193,3 +195,10 @@ doc.fontSize(12).list([
 // Finalize PDF file
 doc.end();
 
+
+}
+
+
+module.exports = {
+    createCV
+}
