@@ -1,0 +1,117 @@
+{
+    "personalDetails": {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "address": "21 chawora Street, New Mabvuku, Harare",
+      "phone": "(555) 555-5555",
+      "additionalDetails": {
+        "dateOfBirth": "09/07/2000",
+        "gender": "Other",
+        "maritalStatus": "Divorced"
+      }
+    },
+    "education": [
+      {
+        "level": "Primary School",
+        "institution": "Simudzai School",
+        "duration": "January 2021 - Present",
+        "grades": [
+          {
+            "subject": "Shona",
+            "score": 6
+          },
+          {
+            "subject": "English",
+            "score": 6
+          },
+          {
+            "subject": "Maths",
+            "score": 6
+          },
+          {
+            "subject": "Geography",
+            "score": 6
+          }
+        ]
+      },
+      {
+        "level": "Secondary  School",
+        "institution": "Mabvuku High School",
+        "duration": "January 2021 - Present",
+        "grades": [
+          {
+            "subject": "Shona",
+            "score": "A"
+          },
+          {
+            "subject": "English",
+            "score":  "B"
+          },
+          {
+            "subject": "Maths",
+            "score": "C"
+          },
+          {
+            "subject": "Geography",
+            "score": "D"
+          }
+        ]
+      }
+    ],
+    "workExperience": [
+      {
+        "position": "Software Developer",
+        "company": "Tech Company",
+        "duration": "January 2021 - Present",
+        "responsibilities": [
+          "Developed web applications using JavaScript and Node.js",
+          "Collaborated with cross-functional teams",
+          "Maintained and updated existing applications"
+        ]
+      },
+      {
+        "position": "Software Developer",
+        "company": "Tech Company",
+        "duration": "January 2021 - Present",
+        "responsibilities": [
+          "Developed web applications using JavaScript and Node.js",
+          "Collaborated with cross-functional teams",
+          "Maintained and updated existing applications"
+        ]
+      }
+    ],
+    "workReference": [
+      {
+        "position": "Software Developer",
+        "company": "Tech Company",
+        "duration": "January 2021 - Present",
+        "contactDetails": {
+          "name": "Brian",
+          "surname": "Thomas",
+          "email": "brian.thomas@example.com",
+          "phone": "(555) 555-5555",
+          "position" : "Manager"
+        }
+      },
+      {
+        "position": "Software Developer",
+        "company": "Tech Company",
+        "duration": "January 2021 - Present",
+        "contactDetails": {
+          "name": "Brian",
+          "surname": "Thomas",
+          "email": "brian.thomas@example.com",
+          "phone": "(555) 555-5555", 
+          "position" : "Manager"
+        }
+      }
+    ],
+    "skills": [
+      "JavaScript",
+      "Node.js",
+      "React",
+      "HTML/CSS",
+      "Git",
+      "SQL"
+    ]
+  }

@@ -5,6 +5,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const useragent = require('useragent');
 const pdfGenerator = require('./pdfGenerator.js');
+const sData = require('./sampleData.json');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -50,13 +51,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/generate-cv', (req, res) => {
-  const data = req.body;
+
+
+  // const data = req.body;
 
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const agent = useragent.parse(req.headers['user-agent']);
 
   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
-  pdfGenerator.createCV();
+  pdfGenerator.createCV(sData);
   res.send('CV generated successfully for visitor  ' + visitor);
 
   // const doc = new PDFDocument();
