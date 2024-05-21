@@ -6,6 +6,11 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const useragent = require('useragent');
 const pdfGenerator = require('./pdfGenerator.js');
 const sData = require('./sampleData.json');
+const path = require('path');
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const notifier = require('node-notifier');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -47,27 +52,45 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     */
 
 app.get('/', (req, res) => {
-  res.send('Hello, welcome to Infynite Solutions CV maker!');
+  return res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/generate-cv', (req, res) => {
 
-
-  // const data = req.body;
+app.post('/generate-cv', (req, res) => {
+  const data = req.body;
 
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const agent = useragent.parse(req.headers['user-agent']);
 
   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
-  pdfGenerator.createCV(sData);
-  res.send('CV generated successfully for visitor  ' + visitor);
+  pdfGenerator.createCV(data);
 
-  // const doc = new PDFDocument();
-  // const fileName = `cv_${Date.now()}.pdf`;
-  // const filePath = `./public/${fileName}`;
-  // doc.pipe(fs.createWriteStream(filePath));
-  // res.redirect(`/public/${fileName}`);
+  res.send('Notification sent!');
+  notifier.notify({
+    title: 'Download Success',
+    message: 'File downloaded successfully',
+  });
 });
+
+// app.post('/generate-cv', (req, res) => {
+//   const data = req.body;
+
+//   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+//   const agent = useragent.parse(req.headers['user-agent']);
+
+//   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
+//   pdfGenerator.createCV(data);
+
+//   res.download(filePath, fileName);
+
+//   // res.send('CV generated successfully for visitor  ' + visitor);
+
+//   // const doc = new PDFDocument();
+//   // const fileName = `cv_${Date.now()}.pdf`;
+//   // const filePath = `./public/${fileName}`;
+//   // doc.pipe(fs.createWriteStream(filePath));
+//   // res.redirect(`/public/${fileName}`);
+// });
 
 app.listen(PORT, () => {
   console.log(`Server listening on port.` + appUrl);

@@ -1,5 +1,4 @@
 const PDFDocument = require('pdfkit');
-const table = require('./drawTable.js');
 const fs = require('fs');
 
 
@@ -40,7 +39,7 @@ doc.fontSize(14).font('Helvetica-Bold').text('Personal Details', {
 });
 doc.moveDown();
 
-const personalDetails = data.personalDetails.additionalDetails;
+const personalDetails = data.personalDetails;
 doc.fontSize(12).text('Date of Birth:',{continued:true}).text(` ${personalDetails.dateOfBirth}`,{
   align: 'right'
 });
@@ -58,7 +57,7 @@ doc.moveTo(50, doc.y + 10)
   .lineTo(550, doc.y + 10)
   .stroke();
   
-
+  doc.moveDown();
 // Add a section for Education
 doc.fontSize(14).text('Educational Background', {
   underline: true
@@ -66,26 +65,28 @@ doc.fontSize(14).text('Educational Background', {
 
 const education = data.education;
 education.map(ed => { 
-  doc.moveDown();
+ 
   doc.fontSize(13).text(`${ed.level}`, {
     continued: true
-  }).font('Helvetica-Bold').text(` - ${ed.institution}`, {
+  }).font('Helvetica-Bold').text(` - ${ed.school}`, {
     align: 'right'
   });
   doc.text(ed.duration, {
     align: 'right'
   });
 
-  doc.text('Grades:');
-  ed.grades.map(grade => {
-    doc.fontSize(12).text(`${grade.subject}`, {
-      continued: true
-    }).text(`${grade.score}`, {
-      align: 'right'
+
+  if (ed.grades === null) {
+    doc.text('Grades:');
+    ed.grades.map(grade => {
+      doc.fontSize(12).text(`${grade.subject}`, {
+        continued: true
+      }).text(`${grade.score}`, {
+        align: 'right'
+      });
     });
-  
-  })
-})
+  }
+});
 
 
 doc.moveTo(50, doc.y + 10)
@@ -121,8 +122,9 @@ doc.moveTo(50, doc.y + 10)
       align: 'right'
     });
     
-    doc.text('Responsibilities:'); 
-    doc.list(wE.responsibilities);
+    // doc.text('Responsibilities:'); 
+    // const arr = wE.responsibilities.split(",");
+    // doc.list(arr);
   });
  
   doc.moveDown();
@@ -151,9 +153,9 @@ doc.moveTo(50, doc.y + 10)
     
     doc.text('Contact Details:');
     doc.list([
-      `${wr.contactDetails.title} ${wr.contactDetails.name} ${wr.contactDetails.surname}  (${wr.contactDetails.position})`,
-      `${wr.contactDetails.phone}`,
-      `${wr.contactDetails.email}`,
+      `${wr.contactName} ${wr.contactSurname}  (${wr.contactPosition})`,
+      `${wr.contactPhone}`,
+      `${wr.contactEmail}`,
     ]);
   })
   
@@ -172,10 +174,13 @@ doc.fontSize(12).list(data.skills);
 doc.moveTo(50, doc.y + 10)
 .lineTo(550, doc.y + 10)
 .stroke();
+
 doc.end();
 
 }
 
+
+
 module.exports = {
-    createCV
+  createCV
 }
