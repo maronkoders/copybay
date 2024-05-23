@@ -1,7 +1,7 @@
 {
-  "name": "cb_maker",
+  "name": "precisecv",
   "version": "1.0.0",
-  "description": "Make CV creation simplier",
+  "description": "Precise CV maker is a web based application that seeks to simplify CV making for job seekers.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

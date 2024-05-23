@@ -11,6 +11,24 @@ const doc = new PDFDocument();
 const outputName = `${data.personalDetails.name}`;
 doc.pipe(fs.createWriteStream(outputName + '.pdf'));
 
+  // Set the border properties
+  const borderWidth = 10;
+  const borderColor = '#000000'; // Black color
+
+  // Draw a rectangle around the entire content area of the document
+  doc.rect(borderWidth, borderWidth, doc.page.width - 2 * borderWidth, doc.page.height - 2 * borderWidth)
+      .lineWidth(1) // Border width
+      .strokeColor(borderColor) // Border color
+      .stroke(); // Draw the border
+
+  doc.on('pageAdded', () => {
+        doc.rect(borderWidth, borderWidth, doc.page.width - 2 * borderWidth, doc.page.height - 2 * borderWidth)
+            .lineWidth(1) // Border width
+            .strokeColor(borderColor) // Border color
+            .stroke(); // Draw the border
+  });
+
+
 // Add title
 doc.fontSize(25).text(`${data.personalDetails.name}`, {
   align: 'center'
@@ -178,7 +196,6 @@ doc.moveTo(50, doc.y + 10)
 doc.end();
 
 }
-
 
 
 module.exports = {
