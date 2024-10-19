@@ -40,6 +40,7 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(express.static(path.join(__dirname, 'public')));
 
   /**
     * @openapi
@@ -71,26 +72,6 @@ app.post('/generate-cv', (req, res) => {
     message: 'File downloaded successfully',
   });
 });
-
-// app.post('/generate-cv', (req, res) => {
-//   const data = req.body;
-
-//   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-//   const agent = useragent.parse(req.headers['user-agent']);
-
-//   const visitor =  `${ip} ${agent.source} ${agent.version} ${agent.browser} ${agent.os}` 
-//   pdfGenerator.createCV(data);
-
-//   res.download(filePath, fileName);
-
-//   // res.send('CV generated successfully for visitor  ' + visitor);
-
-//   // const doc = new PDFDocument();
-//   // const fileName = `cv_${Date.now()}.pdf`;
-//   // const filePath = `./public/${fileName}`;
-//   // doc.pipe(fs.createWriteStream(filePath));
-//   // res.redirect(`/public/${fileName}`);
-// });
 
 app.listen(PORT, () => {
   console.log(`Server listening on port.` + appUrl);

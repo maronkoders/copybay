@@ -28,9 +28,8 @@ doc.pipe(fs.createWriteStream(outputName + '.pdf'));
             .stroke(); // Draw the border
   });
 
-
 // Add title
-doc.fontSize(25).text(`${data.personalDetails.name}`, {
+doc.fontSize(25).text(`${data.personalDetails.name}`.toUpperCase(), {
   align: 'center'
 });
 doc.fontSize(12).text(`${data.personalDetails.address}`, {
@@ -52,7 +51,7 @@ doc.moveTo(50, doc.y)
   .stroke();
 // Add a section for Education
 doc.moveDown();
-doc.fontSize(14).font('Helvetica-Bold').text('Personal Details', {
+doc.font('Times-Roman').fontSize(14).text('Personal Details'.toUpperCase(), {
   underline: true
 });
 doc.moveDown();
@@ -70,36 +69,39 @@ doc.text('Marital Status:',{continued:true}).text(` ${personalDetails.maritalSta
   align: 'right'
 });
 
+doc.moveDown();
 // Add a horizontal line
-doc.moveTo(50, doc.y + 10)
-  .lineTo(550, doc.y + 10)
+doc.moveTo(50, doc.y + 15)
+  .lineTo(550, doc.y + 15)
   .stroke();
   
   doc.moveDown();
+  doc.moveDown();
 // Add a section for Education
-doc.fontSize(14).text('Educational Background', {
+doc.font('Times-Roman').fontSize(14).text('Educational Background'.toUpperCase(), {
   underline: true
 });
 
+doc.moveDown();
 const education = data.education;
 education.map(ed => { 
  
-  doc.fontSize(13).text(`${ed.level}`, {
+  doc.font('Times-Roman').fontSize(14).text(`${ed.level}`, {
     continued: true
-  }).font('Helvetica-Bold').text(` - ${ed.school}`, {
+  }).font('Times-Roman').text(` - ${ed.school}`, {
     align: 'right'
   });
-  doc.text(ed.duration, {
+  doc.font('Times-Roman').text(ed.duration, {
     align: 'right'
   });
 
 
   if (ed.grades === null) {
-    doc.text('Grades:');
+    doc.font('Times-Roman').text('Grades:');
     ed.grades.map(grade => {
-      doc.fontSize(12).text(`${grade.subject}`, {
+      doc.font('Times-Roman').fontSize(12).text(`${grade.subject}`, {
         continued: true
-      }).text(`${grade.score}`, {
+      }).font('Times-Roman').text(`${grade.score}`, {
         align: 'right'
       });
     });
@@ -107,23 +109,17 @@ education.map(ed => {
 });
 
 
-doc.moveTo(50, doc.y + 10)
-  .lineTo(550, doc.y + 10)
+doc.moveDown();
+// Add a horizontal line
+doc.moveTo(50, doc.y + 15)
+  .lineTo(550, doc.y + 15)
   .stroke();
   
-// const skillsTop = doc.y;
-// const skillsHeaders = ["Subject", "Units"];
-// const skillsData = [
-//     ["Shona", "6"],
-//     ["English", "6"],
-//     ["Maths", "4"],
-//     ["Geography", "5"],
-// ];
-// Draw Primary Grades Table
-// table.drawTwoColumnTable(doc, skillsTop, skillsHeaders, skillsData);
-
+  doc.moveDown();
+  doc.moveDown();
+  
 // Add a section for Experience
-  doc.moveDown().fontSize(14).text('Work Experience', {
+  doc.font('Times-Roman').fontSize(14).text('Work Experience'.toUpperCase(), {
     underline: true
   });
 
@@ -131,46 +127,45 @@ doc.moveTo(50, doc.y + 10)
   doc.moveDown();
   
   workExperience.map(wE => {
-    doc.fontSize(12).text(`${wE.position}`, {
+    doc.font('Times-Roman').fontSize(12).text(`${wE.position}`, {
       continued: true
-    }).font('Helvetica-Bold').text(`${wE.company}`, {
+    }).font('Times-Roman').text(`${wE.company}`, {
       align: 'right'
     });
-    doc.text(`${wE.duration}`, {
+    doc.font('Times-Roman').text(`${wE.duration}`, {
       align: 'right'
     });
-    
-    // doc.text('Responsibilities:'); 
-    // const arr = wE.responsibilities.split(",");
-    // doc.list(arr);
+  
   });
  
   doc.moveDown();
-
-  doc.moveTo(50, doc.y + 10)
-  .lineTo(550, doc.y + 10)
-  .stroke();
- 
-
+  // Add a horizontal line
+  doc.moveTo(50, doc.y + 15)
+    .lineTo(550, doc.y + 15)
+    .stroke();
+    
+    doc.moveDown();
+    doc.moveDown();
+    
   const workReference = data.workReference
     // Add a section for Reference
-  doc.moveDown().fontSize(14).text('Work Reference', {
+  doc.font('Times-Roman').fontSize(14).text('Work Reference'.toUpperCase(), {
     underline: true
   });
   doc.moveDown();
 
   workReference.map(wr => {
-    doc.fontSize(12).text(`${wr.position}`, {
+    doc.font('Times-Roman').fontSize(12).text(`${wr.position}`, {
       continued: true
-    }).font('Helvetica-Bold').text(`${wr.company}`, {
+    }).font('Times-Roman').text(`${wr.company}`, {
       align: 'right'
     });
-    doc.text(`${wr.duration}`, {
+    doc.font('Times-Roman').text(`${wr.duration}`, {
       align: 'right'
     });
     
-    doc.text('Contact Details:');
-    doc.list([
+    doc.font('Times-Roman').text('Contact Details:');
+    doc.font('Times-Roman').list([
       `${wr.contactName} ${wr.contactSurname}  (${wr.contactPosition})`,
       `${wr.contactPhone}`,
       `${wr.contactEmail}`,
@@ -178,20 +173,20 @@ doc.moveTo(50, doc.y + 10)
   })
   
   doc.moveDown();
-  doc.moveTo(50, doc.y + 10)
-  .lineTo(550, doc.y + 10)
-  .stroke();
- 
+  // Add a horizontal line
+  doc.moveTo(50, doc.y + 15)
+    .lineTo(550, doc.y + 15)
+    .stroke();
+    
+    doc.moveDown();
+    doc.moveDown();
 // Add a section for Skills
-doc.moveDown().fontSize(14).text('Skills', {
+doc.font('Times-Roman').fontSize(14).text('Skills'.toUpperCase(), {
   underline: true
 });
+doc.moveDown();
+doc.font('Times-Roman').fontSize(12).list(data.skills);
 
-doc.fontSize(12).list(data.skills);
-
-doc.moveTo(50, doc.y + 10)
-.lineTo(550, doc.y + 10)
-.stroke();
 
 doc.end();
 

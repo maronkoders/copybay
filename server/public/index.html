@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editable Resume</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./js/workReference.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+    <script src="./js/workReference.js" defer></script>
+    <script src="./js/education.js" defer></script>
+    <script src="./js/workExperience.js" defer></script>
+    <script src="./js/skills.js" defer></script>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
@@ -79,15 +83,13 @@
 
                     <div class="grid gap-4 mt-4">
                         <div>
-                        <p class="font-semibold mt-2 "><u>Grades:</u></p>
-                        <small class="mb-3"> <em> Click the add Grade button to add</em></small>
-
-                        <div class="grid grid-cols-1 gap-4 mt-4">
-                            <div class="border border-gray-600 p-4" id="grade-score-result">
+                            <p class="font-semibold mt-2"><u>Grades:</u></p>
+                            <small class="mb-3"><em>Click the add Grade button to add</em></small>
+                            <div class="grid grid-cols-1 gap-4 mt-4 grade-score-container">
+                                <!-- Grades will be added here -->
                             </div>
-                            
+                            <button class="addGrade mt-4 bg-blue-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Add Grade</button>
                         </div>
-                        <button id="addGrade" class="mt-4 bg-blue-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Add Grade</button>
                     </div>
                 </div>
             </div>
@@ -212,283 +214,10 @@
         <button id="save" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">GENERATE CV</button>
     </div>
 
- 
 
+    <script src="./js/datepicker.js"></script>
     <script>
-
-flatpickr("#dateOfBirth", {
-       dateFormat: "Y-m-d", // Date format
-       altInput: true, // Show a readable date input
-       altFormat: "F j, Y", 
-       maxDate: new Date().getFullYear() - 18 + "-01-01" // Set minDate to 18 years ago// Readable date format
-   });
-
-   //Grades and Score
-//     document.addEventListener('DOMContentLoaded', function() {
-//     const addButton = document.getElementById('addGrade');
-//     const gradeScoreContainer = document.getElementById('grade-score-result');
-
-//     addButton.addEventListener('click', function() {
-//         const gradeScore = document.createElement('div');
-//         gradeScore.innerHTML = `
-//             <div class="grid grid-cols-3 gap-4 mt-2">
-//                             <div>
-//                                 <input type="text" class="mt-1 mb-1 block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow subject" placeholder="Subject">
-                              
-                              
-//                             </div>
-
-//                             <div>
-                                
-                              
-//                                 <input type="text" class=" mt-1 mb-1  block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow score" placeholder="Score">
-//                             </div>
-
-//                             <div class="relative">
-//             <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-//                 </div>
-//          </div>
-//         `;
-//         gradeScoreContainer.appendChild(gradeScore);
-
-//         const removeButton = gradeScore.querySelector('.relative button');
-//         removeButton.addEventListener('click', function() {
-//             gradeScore.remove();
-//         });
-//     });
-//    });
-
-        //Work Reference JS
-        document.addEventListener('DOMContentLoaded', function() {
-        const addButton = document.getElementById('addPosition');
-        const workReferenceContainer = document.getElementById('workReferenceContainer');
-
-        addButton.addEventListener('click', function() {
-            const workReference = document.createElement('div');
-            workReference.classList.add('work-reference');
-            workReference.classList.add('border');
-            workReference.classList.add('border-gray-300');
-            workReference.classList.add('p-4');
-            workReference.classList.add('mt-2');
-            workReference.innerHTML = `
-            <div class="relative mb-2">
-                                        <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-                                    </div>
-
-                                    <div class="grid grid-cols-3 gap-4">
-                        <div>
-                              
-                        <label for="position" class="block font-semibold">Position:</label>
-                        <input type="text" id="position" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow position" placeholder="Position" >
-
-                        </div>
-
-                        <div>
-                            <label for="company" class="block font-semibold">Company:</label>
-                            <input type="text" id="company" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow company" placeholder="Company">
-                            
-                        </div>
-
-                        <div>
-
-                    <label for="duration" class="block font-semibold ">Duration:</label>
-                    <input type="text" id="duration" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present" >
-                
-                            
-                        </div>
-
-                        <div>
-                            <label for="contact-name" class="block font-semibold">Title:</label>
-                            <select  id="title"  class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
-                                <option value="Mr.">Mr</option>
-                                <option value="Mrs.">Mrs</option>
-                                <option value="Miss">Miss</option>
-                                <option value="Dr">Dr</option>
-                                <option value="Prof">Prof</option>
-                            </select>
-                            
-                        </div>
-
-                        <div>
-                            <label for="contact-name" class="block font-semibold ">Contact Name:</label>
-                            <input type="text" id="contact-name" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-name " placeholder="Contact Name">
-                            
-                        </div>
-
-                        <div>
-
-                            <label for="contact-surname" class="block font-semibold">Contact Surname:</label>
-                            <input type="text" id="contact-surname" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-surname" placeholder="Contact Surname" >
-                        </div>
-
-                        <div>
-
-                            <label for="contact-email" class="block font-semibold ">Contact Email:</label>
-                            <input type="email" id="contact-email" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-email " placeholder="Contact Email">
-                        </div>
-
-                        <div>
-
-                            <label for="contact-phone" class="block font-semibold ">Contact Phone:</label>
-                            <input type="tel" id="contact-phone" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-phone " placeholder="Contact Phone">
-                            
-                        </div>
-                      
-                        <div>
-
-                            <label for="contact-position" class="block font-semibold">Contact Position:</label>
-                            <input type="text" id="contact-position" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-position " placeholder="Contact Position">
-                        </div>
-                  
-                    </div>
-          
-             
-            `;
-            workReferenceContainer.appendChild(workReference);
-
-            const removeButton = workReference.querySelector('.relative button');
-            removeButton.addEventListener('click', function() {
-                workReference.remove();
-            });
-        });
-    });
-
-
-        //workExperience JS
-        document.addEventListener('DOMContentLoaded', function() {
-            const addButton = document.getElementById('addExperience');
-            const workExperienceContainer = document.getElementById('workExperienceContainer');
-
-            addButton.addEventListener('click', function() {
-                const workExperience = document.createElement('div');
-                workExperience.classList.add('work-experience');
-                workExperience.classList.add('border');
-                workExperience.classList.add('border-gray-300');
-                workExperience.classList.add('p-4');
-                workExperience.classList.add('mt-2');
-                workExperience.innerHTML = `
-                <div class="relative">
-                        <div class="relative mt-4">
-                        <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-                    </div>
-                <div class="grid grid-cols-3 gap-4">
-                        <div>
-                            <p class="font-semibold  mt-2">Position:</p>
-                            <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow position" placeholder="Position">
-                        </div>
-                        <div>
-                            <p class="font-semibold mt-2">Company:</p>
-                            <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow company " placeholder="Company">
-                        </div>
-                        <div>
-                            <p class="font-semibold mt-2">Duration:</p>
-                            <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present">
-                        </div>
-                    </div>
-
-                    <p class="font-semibold mt-2">Responsibility:</p>
-                    <textarea class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow responsibility mt-2" rows="4" cols="50" placeholder="Responsibility"></textarea>
-                  
-                    </div>
-                   
-                `;
-                workExperienceContainer.appendChild(workExperience);
-
-                const removeButton = workExperience.querySelector('.relative button');
-                removeButton.addEventListener('click', function() {
-                    workExperience.remove();
-                });
-            });
-        });
-
-        //eduction JS
-        document.addEventListener('DOMContentLoaded', function() {
-            const addButton = document.getElementById('addEducation');
-            const educationContainer = document.getElementById('educationContainer');
-
-            addButton.addEventListener('click', function() {
-                const education = document.createElement('div');
-                education.classList.add('education');
-                education.classList.add('border');
-                education.classList.add('border-gray-300');
-                education.classList.add('p-4');
-                education.classList.add('mt-2');
-                education.classList.add('mt-b');
-                education.innerHTML = `
-
-                 <div class="relative mt-4">
-                        <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-                    </div>
-                       
-                            <div class="grid grid-cols-4 gap-4">
-
-                                <div>
-                                    <p class="font-semibold mt-2">School Name:</p>
-                                    <input type="text"   class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow school" placeholder="School Name">
-                                </div>
-                                <div>
-                                    <p class="font-semibold mt-2">Level:</p>
-                                    <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow level" placeholder="Level">
-                                </div>
-                                <div>
-                                    <p class="font-semibold mt-2">Duration:</p>
-                                    <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present">
-                                </div>
-                                
-                            </div>
-
-                            <div class="grid gap-4 mt-4">
-                                <div>
-                                <p class="font-semibold mt-2 "><u>Grades:</u></p>
-                                <small class="mb-3"> <em> Click the add Grade button to add</em></small>
-
-                                <div class="grid grid-cols-1 gap-4 mt-4">
-                                    <div class="border border-gray-600 p-4" id="grade-score-result">
-                                    </div>
-                                    
-                                </div>
-                                <button id="addGrade" class="mt-4 bg-blue-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Add Grade</button>
-                            </div>
-                        
-                   
-                `;
-                educationContainer.appendChild(education);
-
-                const removeButton = education.querySelector('.relative button');
-                removeButton.addEventListener('click', function() {
-                    education.remove();
-                });
-            });
-        });
-
-        //Skills JS
-        document.addEventListener('DOMContentLoaded', function() {
-            const addSkillButton = document.getElementById('addSkill');
-            const skillsContainer = document.getElementById('skillsContainer');
-
-            addSkillButton.addEventListener('click', function() {
-                const skillInput = document.createElement('div');
-
-                skillInput.innerHTML = `
-                <div class="relative mb-2">
-                    <button class="absolute right-0 top-0 mt-1 mr-1 bg-red-500 text-white text-xs px-2 py-1 rounded">Remove</button>
-                        </div>
-                    <div class="grid gap-4  grid-cols-2 mt-2">
-                        <div>
-                            <input type="text" id="skill" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow skill" placeholder="Skill">
-                            </div>
-                  
-                </div>
-                `;
     
-             skillsContainer.appendChild(skillInput);
-             const removeButton = skillInput.querySelector('.relative button');
-                removeButton.addEventListener('click', function() {
-                    skillInput.remove();
-                });
-            });
-        });
-
 
         function collectFormData() {
             const formData = {
