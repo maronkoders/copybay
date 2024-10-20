@@ -2,6 +2,10 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function createCV(data) {
     // Create a document
 const doc = new PDFDocument();

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./js/workReference.js" defer></script>
     <script src="./js/education.js" defer></script>
     <script src="./js/workExperience.js" defer></script>
@@ -187,9 +187,26 @@
         </div>
         <button id="save" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">GENERATE CV</button>
     </div>
-
-    <script src="./js/datepicker.js"></script>
     <script>
+
+        function clearFormFields() {
+            document.querySelectorAll('input, select, textarea').forEach(field => {
+                if (field.type === 'select-one') {
+                    field.selectedIndex = 0; // Reset select fields to the first option
+                } else {
+                    field.value = ''; // Clear input and textarea fields
+                }
+            });
+        }
+
+
+        flatpickr("#dateOfBirth", {
+            dateFormat: "Y-m-d", // Date format
+            altInput: true, // Show a readable date input
+            altFormat: "F j, Y", 
+            maxDate: new Date().getFullYear() - 18 + "-01-01" // Set minDate to 18 years ago// Readable date format
+        });
+
         function collectFormData() {
             const formData = {
                 personalDetails: {
