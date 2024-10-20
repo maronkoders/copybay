@@ -17,13 +17,14 @@
     <div class="container mx-auto px-4 py-8">
 
         <h1 class="text-2xl font-semibold mb-4"> <u>PreciseCV Maker</u></h1>
+        
         <!-- Personal Details -->
         <div class="mb-10">
             <h2 class="text-2xl font-semibold mb-4"><u>Personal Details</u></h2>
-            <div class="grid grid-cols-4 gap-4  border border-gray-300 p-4">
+            <div class="grid grid-cols-4 gap-4 border border-gray-300 p-4">
                 <div>
                     <p class="font-semibold">Name:</p>
-                    <input type="text" id="name"  class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="John Doe">
+                    <input type="text" id="name" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow" placeholder="John Doe">
                 </div>
                 <div>
                     <p class="font-semibold">Email:</p>
@@ -43,14 +44,14 @@
                 </div>
                 <div>
                     <p class="font-semibold">Gender:</p>
-                    <select  id="gender" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
+                    <select id="gender" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
                 <div>
                     <p class="font-semibold">Marital Status:</p>
-                    <select  id="maritalStatus"  class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
+                    <select id="maritalStatus" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
                         <option value="Single">Single</option>
                         <option value="Married">Married</option>
                         <option value="Divorced">Divorced</option>
@@ -63,12 +64,11 @@
         <div class="mb-10" id="educationSection">
             <h2 class="text-2xl font-semibold mb-4"><u>Educational Background</u></h2>
             <div id="educationContainer">
-                <div class="education  border border-gray-300 p-4 mt-2 mb-2">
+                <div class="education border border-gray-300 p-4 mt-2 mb-2">
                     <div class="grid grid-cols-4 gap-4">
-
                         <div>
                             <p class="font-semibold mt-2">School Name:</p>
-                            <input type="text"   class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow school" placeholder="School Name">
+                            <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow school" placeholder="School Name">
                         </div>
                         <div>
                             <p class="font-semibold mt-2">Level:</p>
@@ -78,9 +78,7 @@
                             <p class="font-semibold mt-2">Duration:</p>
                             <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present">
                         </div>
-                        
                     </div>
-
                     <div class="grid gap-4 mt-4">
                         <div>
                             <p class="font-semibold mt-2"><u>Grades:</u></p>
@@ -93,30 +91,28 @@
                     </div>
                 </div>
             </div>
-          </div>
-          <button id="addEducation" class="mt-4 mb-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Education</button>
+            <button id="addEducation" class="mt-4 mb-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Education</button>
         </div>
 
         <!-- Work Experience -->
-        <div class="mb-8" id="workExperienceSection">
+        <div class="mb-10" id="workExperienceSection">
             <h2 class="text-2xl font-semibold mb-4"><u>Work Experience</u></h2>
             <div id="workExperienceContainer">
-                <div class="work-experience  border border-gray-300 p-4">
-                    <div class="grid grid-cols-3 gap-4">
+                <div class="work-experience border border-gray-300 p-4 mt-2 mb-2">
+                    <div class="grid grid-cols-4 gap-4">
                         <div>
-                            <p class="font-semibold  mt-2">Position:</p>
+                            <p class="font-semibold mt-2">Position:</p>
                             <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow position" placeholder="Position">
                         </div>
                         <div>
                             <p class="font-semibold mt-2">Company:</p>
-                            <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow company " placeholder="Company">
+                            <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow company" placeholder="Company">
                         </div>
                         <div>
                             <p class="font-semibold mt-2">Duration:</p>
                             <input type="text" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present">
                         </div>
                     </div>
-
                     <p class="font-semibold mt-2">Responsibility:</p>
                     <textarea class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow responsibility mt-2" rows="4" cols="50" placeholder="Responsibility"></textarea>
                 </div>
@@ -125,88 +121,66 @@
         </div>
 
         <!-- Work Reference -->
-        <div class="mb-8" id="workReferenceSection">
+        <div class="mb-10" id="workReferenceSection">
             <h2 class="text-2xl font-semibold mb-4"><u>Work Reference</u></h2>
             <div id="workReferenceContainer">
-                <div class="work-reference  border border-gray-300 p-4">
-                    <div class="grid grid-cols-3 gap-4">
+                <div class="work-reference border border-gray-300 p-4 mt-2 mb-2">
+                    <div class="grid grid-cols-4 gap-4">
                         <div>
-                              
-                        <label for="position" class="block font-semibold">Position:</label>
-                        <input type="text" id="position" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow position" placeholder="Position" >
-
+                            <label for="position" class="block font-semibold">Position:</label>
+                            <input type="text" id="position" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow position" placeholder="Position">
                         </div>
-
                         <div>
                             <label for="company" class="block font-semibold">Company:</label>
                             <input type="text" id="company" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow company" placeholder="Company">
-                            
                         </div>
-
                         <div>
-
-                    <label for="duration" class="block font-semibold ">Duration:</label>
-                    <input type="text" id="duration" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present" >
-                
-                            
+                            <label for="duration" class="block font-semibold">Duration:</label>
+                            <input type="text" id="duration" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow duration" placeholder="January 2020 - present">
                         </div>
-
                         <div>
-                            <label for="contact-name" class="block font-semibold">Title:</label>
-                            <select  id="title"  class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
+                            <label for="title" class="block font-semibold">Title:</label>
+                            <select id="title" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow">
                                 <option value="Mr.">Mr</option>
                                 <option value="Mrs.">Mrs</option>
                                 <option value="Miss">Miss</option>
                                 <option value="Dr">Dr</option>
                                 <option value="Prof">Prof</option>
                             </select>
-                            
                         </div>
-
                         <div>
-                            <label for="contact-name" class="block font-semibold ">Contact Name:</label>
-                            <input type="text" id="contact-name" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-name " placeholder="Contact Name">
-                            
+                            <label for="contact-name" class="block font-semibold">Contact Name:</label>
+                            <input type="text" id="contact-name" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-name" placeholder="Contact Name">
                         </div>
-
                         <div>
-
                             <label for="contact-surname" class="block font-semibold">Contact Surname:</label>
-                            <input type="text" id="contact-surname" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-surname" placeholder="Contact Surname" >
+                            <input type="text" id="contact-surname" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-surname" placeholder="Contact Surname">
                         </div>
-
                         <div>
-
-                            <label for="contact-email" class="block font-semibold ">Contact Email:</label>
-                            <input type="email" id="contact-email" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-email " placeholder="Contact Email">
+                            <label for="contact-email" class="block font-semibold">Contact Email:</label>
+                            <input type="email" id="contact-email" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-email" placeholder="Contact Email">
                         </div>
-
                         <div>
-
-                            <label for="contact-phone" class="block font-semibold ">Contact Phone:</label>
-                            <input type="tel" id="contact-phone" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-phone " placeholder="Contact Phone">
-                            
+                            <label for="contact-phone" class="block font-semibold">Contact Phone:</label>
+                            <input type="tel" id="contact-phone" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-phone" placeholder="Contact Phone">
                         </div>
-                      
                         <div>
-
                             <label for="contact-position" class="block font-semibold">Contact Position:</label>
-                            <input type="text" id="contact-position" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-position " placeholder="Contact Position">
+                            <input type="text" id="contact-position" class="block w-full appearance-none bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 rounded shadow contact-position" placeholder="Contact Position">
                         </div>
-                  
                     </div>
-
                 </div>
             </div>
             <button id="addPosition" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Position</button>
         </div>
 
         <!-- Skills -->
-        <div class="mb-8">
+        <div class="mb-10">
             <h2 class="text-2xl font-semibold"><u>Skills</u></h2>
-            <small class="mb-3"> <em> Click the add Skill button to add</em></small>
-            <div id="skillsContainer" class=" border border-gray-300 p-4">
-                <div class="grid grid-cols-2 gap-4" id="skillInputs">
+            <small class="mb-3"><em>Click the add Skill button to add</em></small>
+            <div id="skillsContainer" class="border border-gray-300 p-4 mt-2 mb-2">
+                <div class="grid grid-cols-4 gap-4" id="skillInputs">
+                    <!-- Skills will be added here -->
                 </div>
             </div>
             <button id="addSkill" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Skill</button>
@@ -214,11 +188,8 @@
         <button id="save" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">GENERATE CV</button>
     </div>
 
-
     <script src="./js/datepicker.js"></script>
     <script>
-    
-
         function collectFormData() {
             const formData = {
                 personalDetails: {
@@ -238,19 +209,17 @@
 
             // Collect education data
             const educationItems = document.querySelectorAll('.education');
-            educationItems.forEach((item, index) => {
+            educationItems.forEach((item) => {
                 formData.education.push({
                     school: item.querySelector('.school').value,
                     level: item.querySelector('.level').value,
-                    duration: item.querySelector('.duration').value,
-                    // subject: item.querySelector('.subject').value,
-                    // score: item.querySelector('.score').value
+                    duration: item.querySelector('.duration').value
                 });
             });
 
             // Collect work experience data
             const experienceItems = document.querySelectorAll('.work-experience');
-            experienceItems.forEach((item, index) => {
+            experienceItems.forEach((item) => {
                 formData.workExperience.push({
                     position: item.querySelector('.position').value,
                     company: item.querySelector('.company').value,
@@ -261,7 +230,7 @@
 
             // Collect work reference data
             const referenceItems = document.querySelectorAll('.work-reference');
-            referenceItems.forEach((item, index) => {
+            referenceItems.forEach((item) => {
                 formData.workReference.push({
                     position: item.querySelector('.position').value,
                     company: item.querySelector('.company').value,
@@ -276,7 +245,7 @@
 
             // Collect skills data
             const skillInputs = document.querySelectorAll('.skill');
-            skillInputs.forEach((input, index) => {
+            skillInputs.forEach((input) => {
                 formData.skills.push(input.value);
             });
 
@@ -313,7 +282,6 @@
             const formData = collectFormData();
             sendData(formData);
         });
-
     </script>
 </body>
 </html>
